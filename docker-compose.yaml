@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  db:
+    image: mysql:8.0.32
+    container_name: medcloud_db
+    restart: always
+    environment:
+      # Aqui eu defino as variaveis de ambiente para o banco
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: PatientManagment
+    ports:
+      - 3306:3306
+      - 33060:33060
+    healthcheck:
+      # Aqui eu aguardo e verifico se o banco subiu corretamente
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 5
+    volumes:
+      # Para testes sem o sequelize eu poderei simplesmente adicionar SQL por meio da pasta definida
+      - ./sql:/docker-entrypoint-initdb.d

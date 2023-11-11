@@ -1,0 +1,1 @@
+-- Caso precise fazer alguma alteração pré-Sequelize
