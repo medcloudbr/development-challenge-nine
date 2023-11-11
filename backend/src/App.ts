@@ -5,11 +5,10 @@ class App {
 
   constructor() {
     this.app = express();
+
     this.app.use(express.json());
 
-    this.app.get('/', (req, res) => {
-      res.send('Hello World!');
-    });
+    this.app.get('/', (_req, res) => res.status(200).send('MedCloud API no ar!'));
   }
 
   public start(PORT: string | number):void {
