@@ -12,7 +12,7 @@ services:
       - JWT_SECRET=secret123 #Caso eu venha a utilizar um sistema de autenticação de usuário.
     working_dir: /app
     volumes:
-      - ./backend/src:/app/src
+      - ./backend/:/app/
     container_name: medcloud_backend
     restart: always
     depends_on:
