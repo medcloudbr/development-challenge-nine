@@ -10,7 +10,7 @@ export default {
                 primaryKey: true,
             },
             fullName: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(100),
                 allowNull: false,
             },
             birthDate: {
@@ -18,7 +18,7 @@ export default {
                 allowNull: false,
             },
             email: {
-                type: DataTypes.STRING,
+                type: DataTypes.STRING(100),
                 allowNull: false,
             },
         });

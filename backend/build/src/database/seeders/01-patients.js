@@ -4,7 +4,7 @@ exports.default = {
     up: async (queryInterface) => {
         await queryInterface.bulkInsert('patients', [
             {
-                fullName: 'Juan Cassius carneiro Pereira',
+                fullName: 'Juan Cassius Carneiro Pereira',
                 birthDate: '1997-01-03',
                 email: 'cassjuan@hotmail.com',
             },
