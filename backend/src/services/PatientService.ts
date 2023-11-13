@@ -1,12 +1,15 @@
 import { NewEntity } from "../interfaces";
 import PatientModel from "../models/PatientModel";
-import { IPatient } from "../interfaces/patients/IPatient";
+import AddressModel from "../models/AddressModel";
+import { IPatient, IPatientWithAddress } from "../interfaces/patients/IPatient";
 import { IPatientModel } from "../interfaces/patients/IPatientModel";
 import { ServiceMessage, ServiceResponse } from "../interfaces/ServiceResponse";
+import { IAddressModel } from "../interfaces/addresses/IAddressModel";
 
 export default class PatientService {
     constructor(
-        private patientModel: IPatientModel = new PatientModel()
+        private patientModel: IPatientModel = new PatientModel(),
+        private addressModel: IAddressModel = new AddressModel()
     ) { }
 
     public async createPatient(patient: NewEntity<IPatient>): Promise<ServiceResponse<IPatient>> {
@@ -17,8 +20,9 @@ export default class PatientService {
         };
     }
 
-    public async getAllPatients(): Promise<ServiceResponse<IPatient[]>> {
+    public async getAllPatients(): Promise<ServiceResponse<IPatientWithAddress[]>> {
         const allPatients = await this.patientModel.findAll();
+
         return {
             status: 'SUCCESSFUL',
             data: allPatients
@@ -31,15 +35,19 @@ export default class PatientService {
         return { status: 'SUCCESSFUL', data: patient };
     }
 
-    public async updatePatient(id: number, patient: IPatient): Promise<ServiceResponse<ServiceMessage>> {
+    public async updatePatient(id: number, patient: IPatientWithAddress): Promise<ServiceResponse<ServiceMessage>> {
         const patientFound = await this.patientModel.findById(id);
+
         if (!patientFound) return { status: 'NOT_FOUND', data: { message: `Patient ${id} not found` } };
 
+        //Essa foi a solução que encontrei após inúmeras tentativas de fazer o update conjunto das tabelas.
         const updatePatient = await this.patientModel.update(id, patient);
-        if (!updatePatient) {
+        const updateAddress = await this.addressModel.update(id, patient.address);
+
+        if (!updatePatient && !updateAddress) {
             return {
                 status: 'CONFLICT',
-                data: { message: `There are no updates to perform in Patient ${id}` }
+                data: { message: `There are no updates to perform in Patient ${id} or his address` }
             };
         }
         return { status: 'SUCCESSFUL', data: { message: 'Patient updated' } };
