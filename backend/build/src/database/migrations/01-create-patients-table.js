@@ -11,7 +11,7 @@ exports.default = {
                 primaryKey: true,
             },
             fullName: {
-                type: sequelize_1.DataTypes.STRING,
+                type: sequelize_1.DataTypes.STRING(100),
                 allowNull: false,
             },
             birthDate: {
@@ -19,7 +19,7 @@ exports.default = {
                 allowNull: false,
             },
             email: {
-                type: sequelize_1.DataTypes.STRING,
+                type: sequelize_1.DataTypes.STRING(100),
                 allowNull: false,
             },
         });

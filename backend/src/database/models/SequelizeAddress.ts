@@ -69,9 +69,4 @@ SequelizeAddress.init({
     timestamps: false,
 });
 
-SequelizeAddress.belongsTo(SequelizePatient, {
-    foreignKey: 'patientId',
-    as: 'patient',
-});
-
 export default SequelizeAddress;

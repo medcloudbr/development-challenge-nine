@@ -49,4 +49,9 @@ SequelizePatient.hasOne(SequelizeAddress, {
     as: 'address',
 });
 
+SequelizeAddress.belongsTo(SequelizePatient, {
+    foreignKey: 'patientId',
+    as: 'patient',
+});
+
 export default SequelizePatient;
