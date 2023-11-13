@@ -1,10 +1,10 @@
-import { IPatient } from "./IPatient";
+import { IPatient, IPatientWithAddress } from "./IPatient";
 import { NewEntity } from "..";
 
 export interface IPatientModel {
-    create(data: Partial<IPatient>): Promise<IPatient>,
-    findAll(): Promise<IPatient[]>,
-    findById(id: IPatient['id']): Promise<IPatient | null>
+    create(data: Partial<IPatientWithAddress>): Promise<IPatientWithAddress>,
+    findAll(): Promise<IPatientWithAddress[]>,
+    findById(id: IPatientWithAddress['id']): Promise<IPatientWithAddress | null>
     update(id: IPatient['id'], data: Partial<NewEntity<IPatient>>): Promise<IPatient | null>,
     delete(id: IPatient['id']): Promise<number>,
 }
