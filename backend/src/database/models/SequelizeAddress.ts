@@ -9,7 +9,7 @@ import db from '.';
 import SequelizePatient from './SequelizePatient';
 
 class SequelizeAddress extends Model<InferAttributes<SequelizeAddress>,
-InferCreationAttributes<SequelizeAddress>> {
+    InferCreationAttributes<SequelizeAddress>> {
 
     declare id: CreationOptional<number>;
     declare street: string;
@@ -57,12 +57,12 @@ SequelizeAddress.init({
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-          model: 'patients',
-          key: 'id'
+            model: 'patients',
+            key: 'id'
         },
         onUpdate: 'CASCADE',
         onDelete: 'CASCADE'
-      }
+    }
 }, {
     sequelize: db,
     tableName: 'addresses',

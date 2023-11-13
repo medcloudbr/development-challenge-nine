@@ -10,7 +10,7 @@ import SequelizeAddress from './SequelizeAddress';
 // import SequelizeAddress from './SequelizeAddress';
 
 class SequelizePatient extends Model<InferAttributes<SequelizePatient>,
-InferCreationAttributes<SequelizePatient>> {
+    InferCreationAttributes<SequelizePatient>> {
 
     declare id: CreationOptional<number>;
     declare fullName: string;

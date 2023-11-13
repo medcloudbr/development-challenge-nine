@@ -15,11 +15,11 @@ class App {
   }
 
   //Aqui eu defino as rotas da minha aplicação pelo index da pasta routes e lá eu faço a distribuição das rotas.
-  private routes():void {
+  private routes(): void {
     this.app.use(router);
   }
 
-  public start(PORT: string | number):void {
+  public start(PORT: string | number): void {
     this.app.listen(PORT, () => console.log(`Backend no ar na porta ${PORT}!`));
   }
 

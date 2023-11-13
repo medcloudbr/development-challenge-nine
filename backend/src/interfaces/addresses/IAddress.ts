@@ -7,4 +7,4 @@ export interface IAddress {
     state: string;
     country: string;
     patientId: number;
-    }
+}

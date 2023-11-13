@@ -17,7 +17,7 @@ export default class PatientModel implements IPatientModel {
 
         const { id, fullName, birthDate, email } = dbData;
         const convertedData: IPatientWithAddress = { id, fullName, birthDate, email, address: data.address };
-        
+
         return convertedData;
     }
 
@@ -35,7 +35,7 @@ export default class PatientModel implements IPatientModel {
         return convertedData;  // return dbData.map(({ id, fullName, birthDate, email }) => ({ id, fullName, birthDate, email }));
     }
 
-    async findById(id: number): Promise<IPatientWithAddress | null > {
+    async findById(id: number): Promise<IPatientWithAddress | null> {
         const dbData = await this.model.findByPk(id, {
             include: [{
                 model: this.addressModel,
@@ -47,7 +47,7 @@ export default class PatientModel implements IPatientModel {
 
         const { fullName, birthDate, email, address }: IPatient | any = dbData;
         const convertedData: IPatientWithAddress = { id, fullName, birthDate, email, address };
-        
+
         return convertedData;
     }
 
