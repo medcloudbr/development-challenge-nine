@@ -27,8 +27,8 @@ export const usePatient = () => {
         return data;
     }
 
-    const update = async (patient: IPatientWithAddress) => {
-        const { status, data } = await patientService.update(patient)
+    const update = async (patient: IPatientWithAddress, id:number) => {
+        const { status, data } = await patientService.update(patient, id)
         if (status !== 200) throw new Error('Error updating patient');
         return data;
     }

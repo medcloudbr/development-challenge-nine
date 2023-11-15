@@ -9,7 +9,7 @@ const getById = (id: number) => Api.get<IPatientWithAddress[]>(`${patientRoute}/
 
 const create = (patient: IPatientWithAddress) => Api.post<IPatientWithAddress>(patientRoute, patient);
 
-const update = (patient: IPatientWithAddress) => Api.put<IPatientWithAddress>(patientRoute, patient);
+const update = (patient: IPatientWithAddress, id:number) => Api.put<IPatientWithAddress>(`${patientRoute}/${id}`, patient);
 
 const remove = (id: number) => Api.delete<IPatientWithAddress>(`${patientRoute}/${id}`);
 
