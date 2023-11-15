@@ -12,11 +12,11 @@ export default class PatientService {
         private addressModel: IAddressModel = new AddressModel()
     ) { }
 
-    public async createPatient(patient: NewEntity<IPatient>): Promise<ServiceResponse<IPatient>> {
+    public async createPatient(patient: NewEntity<IPatient>): Promise<ServiceResponse<IPatient[]>> {
         const newPatient = await this.patientModel.create(patient);
         return {
             status: 'SUCCESSFUL',
-            data: newPatient
+            data: [newPatient]
         };
     }
 
@@ -29,10 +29,10 @@ export default class PatientService {
         };
     }
 
-    public async getPatientById(id: number): Promise<ServiceResponse<IPatient>> {
+    public async getPatientById(id: number): Promise<ServiceResponse<IPatient[]>> {
         const patient = await this.patientModel.findById(id);
         if (!patient) return { status: 'NOT_FOUND', data: { message: `Patient ${id} not found` } };
-        return { status: 'SUCCESSFUL', data: patient };
+        return { status: 'SUCCESSFUL', data: [patient] };
     }
 
     public async updatePatient(id: number, patient: IPatientWithAddress): Promise<ServiceResponse<ServiceMessage>> {

@@ -34,13 +34,13 @@ export default class PatientController {
         const id = Number(req.params.id);
         const patient = req.body;
         const serviceResponse = await this.patientService.updatePatient(id, patient);
-    
+
         if (serviceResponse.status !== 'SUCCESSFUL') {
-          return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
+            return res.status(mapStatusHTTP(serviceResponse.status)).json(serviceResponse.data);
         }
-    
+
         return res.status(200).json(serviceResponse.data);
-      }
+    }
 
     public async deletePatient(req: Request, res: Response): Promise<Response> {
         const id = Number(req.params.id);
