@@ -1,0 +1,17 @@
+div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: auto;
+    max-width: 500px;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+}
+
+p {
+    margin: 6px;
+    align-self: flex-start;
+}

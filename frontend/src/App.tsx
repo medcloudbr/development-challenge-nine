@@ -1,17 +1,17 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
-import Teste from './teste'
-import ThemeProvider from './context/ThemeProvider'
+import PatientProvider from './context/PatientProvider'
+import Teste from './components/Teste'
 
 function App() {
 
 
   return (
-    <ThemeProvider>
+    <PatientProvider>
       <Routes>
         <Route path='/' element={<Teste />} />
       </Routes>
-    </ThemeProvider>
+    </PatientProvider>
   )
 }
 
