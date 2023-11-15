@@ -17,7 +17,7 @@ export const usePatient = () => {
         const { status, data } = await patientService.getById(id);
         if (status !== 200) throw new Error('Error fetching patient');
         console.log(data);
-        
+        setPatients(data);
         return data;
     }
 

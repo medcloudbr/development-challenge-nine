@@ -1,21 +1,26 @@
-
-import { useEffect } from 'react';
-import fetch from '../utils/api/fetch';
+import { useEffect } from "react";
+import { usePatient } from "../hooks";
+import { Button, FormControl, TextField, FormLabel } from "@mui/material";
 
 export default function Form() {
+    const {
+        patients,
+        getById,
+    } = usePatient();
 
     useEffect(() => {
-        async function getPatients() {
-            const response = await fetch.get('/patients');
-            console.log(response);
-            return response.data;
-        }
-        getPatients();
+        getById(1);
     }, []);
 
     return (
         <form >
-            Teste
+            <FormControl>
+                <FormLabel>Nome Completo</FormLabel>
+                <TextField></TextField>
+                <Button
+                    onClick={() => console.log(patients)}
+                >Submit</Button>
+            </FormControl>
         </form>
     );
 }

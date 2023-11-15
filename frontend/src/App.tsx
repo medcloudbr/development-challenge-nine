@@ -1,7 +1,8 @@
 import { Route, Routes } from 'react-router-dom'
 import './App.css'
 import PatientProvider from './context/PatientProvider'
-import Teste from './components/Teste'
+// import Teste from './components/Teste'
+import Form from './components/Form'
 
 function App() {
 
@@ -9,7 +10,7 @@ function App() {
   return (
     <PatientProvider>
       <Routes>
-        <Route path='/' element={<Teste />} />
+        <Route path='/' element={<Form />} />
       </Routes>
     </PatientProvider>
   )

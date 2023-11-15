@@ -11,8 +11,9 @@ export default function Teste() {
 
   return (
     <div>{patients.map((patient) => <div key={patient.id}>
-      Nome:
-      {patient.fullName}
+      Nome:{patient.fullName}
+      <br />
+      ID: {patient.id}
       <br />
     </div>)}</div>
   )
