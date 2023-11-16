@@ -1,46 +1,18 @@
-nav {
-    display: flex;
-    height: 10%;
-    padding: 1rem;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: #ffff;
-    box-shadow: 0px 5px 8px 0px #00000026;
-    position: sticky;
-    top: 0;
-    z-index: 999;
+:root {
+  --primary-color: #009adf;
+  --secondary-color: #002639;
+  --tertiary-color: #f5f5f5;
+  --primary-text-color: #757575;
+  --secondary-text-color: var(--primary-color);
+  --tertiary-text-color: var(--secondary-color);
+  --quaternary-text-color: #52575c;
+  --quintenary-text-color: #7e8286;
+  font-family: 'Inter', sans-serif;
 }
 
-nav img {
-    height: 21px;
-    justify-self:left
-}
-
-.main-logo {
-    height: 21px;
-    justify-self: center;
-    margin: 0 auto;
-}
-
-main {
-    background-color: #f5f5f5;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-
-}
-
-button {
-    background-color: #ffff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #757575;
-    transition: all 0.2s ease-in-out;
+.home-div {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-color: var(--tertiary-color);
 }

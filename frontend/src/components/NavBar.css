@@ -1,0 +1,86 @@
+:root {
+  --primary-color: #009adf;
+  --secondary-color: #002639;
+  --tertiary-color: #f5f5f5;
+  --primary-text-color: #757575;
+  --secondary-text-color: var(--primary-color);
+  --tertiary-text-color: var(--secondary-color);
+  --quaternary-text-color: #52575c;
+  --quintenary-text-color: #7e8286;
+  font-family: 'Inter', sans-serif;
+}
+
+nav {
+  display: flex;
+  height: 10%;
+  padding: 1rem;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-color);
+  box-shadow: 0px 5px 8px 0px #00000026;
+  position: absolute;
+  top: 0;
+  z-index: 999;
+}
+
+nav img {
+  height: 21px;
+  justify-self: left;
+}
+
+.main-logo {
+  height: 21px;
+  justify-self: center;
+  margin: 0 auto;
+}
+
+.open-menu-button {
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.drawer {
+  background-color: var(--secondary-color);
+  height: 100vh;
+  width: auto; /* Largura automática com base no conteúdo */
+  color: var(--tertiary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.menu-typo {
+  color: var(--tertiary-color);
+  box-shadow: 0px 5px 8px 0px #00000026;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0.5rem 0;
+  padding: 1.2rem;
+}
+
+.divider {
+  background-color: transparent;
+  height: 1px;
+  width: 100%;
+  margin-top: 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}
+
+.user-name {
+  color: var(--tertiary-color);
+  padding: 1rem 0;
+  font-family: 'Inter', sans-serif;
+}
