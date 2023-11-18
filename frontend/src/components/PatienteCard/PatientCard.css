@@ -1,0 +1,26 @@
+:root {
+  --primary-color: #009adf;
+  --secondary-color: #002639;
+  --tertiary-color: #f5f5f5;
+  --primary-text-color: #757575;
+  --secondary-text-color: var(--primary-color);
+  --tertiary-text-color: var(--secondary-color);
+  --quaternary-text-color: #52575c;
+  --quintenary-text-color: #7e8286;
+  font-family: 'Inter', sans-serif;
+}
+
+.patient-main-div {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    color: var(--quaternary-text-color);
+    padding: 10px 10px 1px 10px;
+}
+
+.patient-buttons-div {
+    margin-left: auto;
+    padding-left: 10px;
+}

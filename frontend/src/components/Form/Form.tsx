@@ -32,8 +32,8 @@ import {
     Typography,
     Paper,
 } from "@mui/material";
-import { IPatientWithAddress } from "../interfaces";
-import { usePatient } from "../hooks/usePatient";
+import { IPatientWithAddress } from "../../interfaces";
+import { usePatient } from "../../hooks/usePatient";
 
 interface PatientFormProps {
     initialPatient?: IPatientWithAddress;

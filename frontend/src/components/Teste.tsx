@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
 import { usePatient } from '../hooks';
+import PatientCard from './PacienteCard/PatientCard';
 
 export default function Teste() {
-  const { patients, getAll, getById } = usePatient();
+  const { patients, getAll } = usePatient();
 
   useEffect(() => {
     getAll();
-    getById(1);
   }, []);
 
   return (
-    <div>{patients.map((patient) => <div key={patient.id}>
-      Nome:{patient.fullName}
-      <br />
-      ID: {patient.id}
-      <br />
-    </div>)}</div>
-  )
+    <div>
+      {patients.map((patient) => (
+        <PatientCard key={patient.id} patient={patient} />
+      ))}
+    </div>
+  );
 }
