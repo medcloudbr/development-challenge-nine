@@ -1,0 +1,7 @@
+.edit-patient-body {
+    display: flex;
+    flex-direction: column;
+    height: 85vh;
+    margin: 15vh auto 0 auto;
+    width: 80vw;
+}

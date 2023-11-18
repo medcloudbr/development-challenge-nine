@@ -1,20 +1,19 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from 'react';
-import { usePatient } from '../hooks';
-import PatientCard from './PacienteCard/PatientCard';
+import { useContext, useEffect } from 'react';
+import PatientCard from './PatienteCard/PatientCard';
+import { PatientContext } from '../context/PatientContext';
 
 export default function Teste() {
-  const { patients, getAll } = usePatient();
-
+  const patientContext = useContext(PatientContext);
   useEffect(() => {
-    getAll();
-  }, []);
+    patientContext?.getAll();
+  }, [patientContext?.wasPatientDeleted]);
 
   return (
-    <div>
-      {patients.map((patient) => (
-        <PatientCard key={patient.id} patient={patient} />
-      ))}
+    <div className='patient-list-div'>
+      {patientContext?.patients.sort((a, b) => a.fullName.localeCompare(b.fullName))
+        .map((patient) => (
+          <PatientCard key={patient.id} patient={patient} />
+        ))}
     </div>
   );
 }

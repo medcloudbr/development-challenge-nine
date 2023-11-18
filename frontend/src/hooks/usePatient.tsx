@@ -1,15 +1,23 @@
-import { useCallback, useState } from "react"
+import {
+    useCallback,
+    useState
+} from "react"
 import { patientService } from "../services";
 import { IPatientWithAddress } from "../interfaces";
+import { IPatientContext } from "../context/PatientContext";
 
-export const usePatient = () => {
+
+
+export const usePatient = (): IPatientContext => {
     const [patients, setPatients] = useState<IPatientWithAddress[]>([]);
+    const [action, setAction] = useState<string>('')
+    const [wasPatientDeleted, setWasPatientDeleted] = useState<boolean>(false);
 
 
-    const getAll = useCallback(async () => {
+    const getAll = useCallback(async (): Promise<void> => {
         const { status, data } = await patientService.getAll();
         if (status !== 200) throw new Error('Error fetching patients');
-        setPatients(data);
+        await setPatients(data);
         console.log(data);
     }, []);
 
@@ -24,27 +32,36 @@ export const usePatient = () => {
     const create = async (patient: IPatientWithAddress) => {
         const { status, data } = await patientService.create(patient);
         if (status !== 201) throw new Error('Error creating patient');
+        await setAction('create');
         return data;
     }
 
-    const update = async (patient: IPatientWithAddress, id:number) => {
+    const update = async (patient: IPatientWithAddress, id: number) => {
         const { status, data } = await patientService.update(patient, id)
         if (status !== 200) throw new Error('Error updating patient');
+        setAction('update');
+        console.log('Action do update:', action)
         return data;
     }
 
     const remove = async (id: number) => {
-        const { status, data } = await patientService.remove(id);
+        const { status } = await patientService.remove(id);
         if (status !== 200) throw new Error('Error deleting patient');
-        return data;
+        setWasPatientDeleted(!wasPatientDeleted);
+        setAction('delete');
     }
 
     return {
         patients,
+        setPatients,
         getAll,
         getById,
         create,
         update,
-        remove
+        remove,
+        wasPatientDeleted,
+        setWasPatientDeleted,
+        // action, 
+        // setAction,
     }
 }

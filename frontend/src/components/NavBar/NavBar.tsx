@@ -1,15 +1,16 @@
 import './NavBar.css'
-import medcloudLogo from '../assets/medcloud-white.svg';
-import menuButton from '../assets/menu.svg'
+import medcloudLogo from '../../assets/medcloud-white.svg';
+import menuButton from '../../assets/menu.svg'
 import { useState } from 'react';
 import { Avatar, Box, Button, Drawer, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 function NavBar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
 
   const inMenuButtonStyle = {
-    color: '#fff',
+    color: '#f5f5f5',
     padding: '1rem'
   }
   return (
@@ -40,25 +41,29 @@ function NavBar() {
             Menu
           </Typography>
           <div className='divider' >
-            <Button className='in-menu-button'
-              style={inMenuButtonStyle}
-            >
-              Pacientes
-            </Button>
-            <Button className='in-menu-button'
-              style={inMenuButtonStyle}
-            >
-              Sobre
-            </Button>
+            <Link to='/test'>
+              <Button className='in-menu-button'
+                style={inMenuButtonStyle}
+              >
+                Pacientes
+              </Button>
+            </Link>
+            <Link to='/about'>
+              <Button className='in-menu-button'
+                style={inMenuButtonStyle}
+              >
+                Sobre
+              </Button>
+            </Link>
           </div>
           <Box className='user-info'>
             <Avatar alt='user-picture' />
             <Typography variant='body1' component='div' className='user-name'>
-              Nome do usuário
+              Nome do Usuário
             </Typography>
           </Box>
         </Box>
-    
+
       </Drawer >
     </>
   )

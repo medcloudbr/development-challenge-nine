@@ -1,10 +1,16 @@
-import { IPatientWithAddress } from "../interfaces/IPatientWithAddress";
+import { createContext, Dispatch, SetStateAction } from 'react';
+import { IPatientWithAddress } from '../interfaces';
 
-export type PatientContextType = {
-    patients: IPatientWithAddress | IPatientWithAddress[];
-    getPatients: () => Promise<IPatientWithAddress[]>;
-    // getPatientById: (id: number) => Promise<IPatientWithAddress>;
-    // putPatient: (patient: IPatientWithAddress) => Promise<object>;
-    // postPatient: (patient: IPatientWithAddress) => Promise<IPatientWithAddress>;
-    // deletePatient: (id: number) => Promise<object>;
-};
+export interface IPatientContext {
+  patients: IPatientWithAddress[];
+  setPatients: Dispatch<SetStateAction<IPatientWithAddress[]>>;
+  wasPatientDeleted: boolean;
+  setWasPatientDeleted: Dispatch<SetStateAction<boolean>>;
+  getAll: () => Promise<void>;
+  getById: (id: number) => Promise<IPatientWithAddress[]>;
+  create: (patient: IPatientWithAddress) => Promise<IPatientWithAddress>;
+  update: (patient: IPatientWithAddress, id: number) => Promise<IPatientWithAddress>;
+  remove: (id: number) => Promise<void>;
+}
+
+export const PatientContext = createContext<IPatientContext | undefined>(undefined);
