@@ -1,5 +1,37 @@
 # Development challenge
 
+In this repository you will find my solution to the Medcloud Coding Challenge 9. The requirements to deliver this challenge are on the end of this document.
+
+## Requirements to run this project
+
+- [Docker](https://www.docker.com/) installed in your machine.
+
+## Instructions
+
+First you need to clone this project:
+
+```bash
+    git clone git@github.com:juan-cassius/development-challenge-nine.git
+```
+Make Sure that you are not using the ports below in your machine. If you want to use other ports instead just change the ports on the docker-compose.yaml file on the root of this project:
+```
+3000 // Frontend Port
+3001 // Backend Port
+3006 // Database Port
+```
+
+Then you'll have to setup the 3 container (frontend, backend, db):
+
+```bash
+    sudo docker compose up -d --build
+```
+
+This may take long, the backend container depends on the status check of the db container. After this step you are good to go. Just use the links bellow to use the services:
+```bash
+http://localhost:3000/ <- This is the frontend address
+http://localhost:3001/ <- This is the backend address
+```
+
 ![logo medcloud-03 white copy](https://user-images.githubusercontent.com/46347123/158176045-de9fefb0-35e2-4515-83ff-c132608aa870.png)
 
 About Medcloud: 
