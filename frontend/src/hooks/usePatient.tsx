@@ -40,7 +40,6 @@ export const usePatient = (): IPatientContext => {
         const { status, data } = await patientService.update(patient, id)
         if (status !== 200) throw new Error('Error updating patient');
         setAction('update');
-        console.log('Action do update:', action)
         return data;
     }
 

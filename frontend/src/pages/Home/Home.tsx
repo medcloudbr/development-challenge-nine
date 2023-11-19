@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import NavBar from '../../components/NavBar/NavBar';
-import Teste from '../../components/Teste';
+import Main from '../../components/Main';
 import './Home.css';
 import AddPatient from '../../components/AddPatient/AddPatient';
 
@@ -10,7 +10,7 @@ export default function Home() {
       <NavBar />
       <div className='home-body'>
         <Typography variant='h4' className='title-element'>Pacientes</Typography>
-        <Teste />
+        <Main />
         <AddPatient />
       </div>
     </div>

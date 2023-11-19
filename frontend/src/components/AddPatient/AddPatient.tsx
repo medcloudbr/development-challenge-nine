@@ -16,7 +16,7 @@ function AddPatient() {
                         width: '100px',
                     }}
                 >
-                    <PersonAdd style={{ color: '#f5f5f5' }} />
+                    <PersonAdd style={{ color: '#f5f5f5', fontSize: '50px', marginRight: '11px' }} />
                 </Fab>
             </Link>
         </div >

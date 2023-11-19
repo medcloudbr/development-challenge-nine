@@ -1,0 +1,66 @@
+:root {
+  --primary-color: #009adf;
+  --secondary-color: #002639;
+  --tertiary-color: #f5f5f5;
+  --primary-text-color: #757575;
+  --secondary-text-color: var(--primary-color);
+  --tertiary-text-color: var(--secondary-color);
+  --quaternary-text-color: #52575c;
+  --quintenary-text-color: #7e8286;
+  font-family: 'Inter', sans-serif;
+}
+
+.patient-info-card {
+  width: 80vw;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+}
+
+.patient-info-card-header {
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+.patient-info-card-body {
+  height: 100%;
+}
+
+.patient-info-card-body-info-content {
+  display: flex;
+  background-color: var(--tertiary-color);
+  border-radius: 15px;
+  height: 100%;
+
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  margin: 10px;
+  color: var(--secondary-color);
+}
+
+.patient-buttons-div {
+  margin-top: auto;
+}
+
+.patient-info-card-body-picture {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-color: var(--tertiary-color);
+  border-radius: 15px;
+  border: 1px solid transparent;
+}
+
+.proper-picture {
+  font-size: '200px';
+  color: '#009adf';
+  background-color: 'white';
+  border-radius: '15px';
+}

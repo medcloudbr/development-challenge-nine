@@ -3,7 +3,7 @@ import { IPatientWithAddress } from '../../interfaces';
 import { Button, Typography } from '@mui/material';
 import { PersonRemove, EditRounded, PersonRounded } from '@mui/icons-material';
 import Swal from 'sweetalert2';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { PatientContext } from '../../context/PatientContext';
 
@@ -36,7 +36,7 @@ export default function PatientCard(props: PatientCardProps) {
     if (result.isConfirmed) {
       try {
         await patientContext?.remove(patient.id);
-        navigate('/test');
+        navigate('/');
 
         Swal.fire({
           title: 'Removido!',
@@ -53,10 +53,10 @@ export default function PatientCard(props: PatientCardProps) {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate('/test')
+        navigate('/')
         patientContext?.getAll();
-      } 
-    }    
+      }
+    }
   };
 
   const handleEditClick = () => {
@@ -69,10 +69,21 @@ export default function PatientCard(props: PatientCardProps) {
       <div className='patient-picture-div'>
         <PersonRounded style={mainPersonStyle} />
       </div>
-      <Typography style={{
-        minWidth: '200px',
-        textAlign: 'center',
-      }}>{patient.fullName}</Typography>
+      <Link
+        to={`/details/${patient.id}`}
+        style={{
+          textDecoration: 'none',
+          color: mainPersonStyle.color,
+        }}
+      >
+        <Typography
+          style={{
+            minWidth: '200px',
+            textAlign: 'center',
+          }}>
+          {patient.fullName}
+        </Typography>
+      </Link>
       <div className='patient-buttons-div'>
         <Button onClick={handleEditClick}
           style={{ color: mainPersonStyle.color }}

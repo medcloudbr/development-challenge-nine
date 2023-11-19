@@ -1,9 +1,9 @@
 import React, { useState, ChangeEvent, FormEvent, useEffect, ChangeEventHandler } from "react";
 import { TextField, Button, Grid, Typography } from "@mui/material";
-import { IPatientWithAddress } from "../../interfaces";
-import { usePatient } from "../../hooks/usePatient";
 import Swal from "sweetalert2";
 import { useNavigate, useParams } from "react-router-dom";
+import { IPatientWithAddress } from "../../interfaces";
+import { usePatient } from "../../hooks/usePatient";
 import './Form.css';
 
 interface PatientFormProps {
@@ -36,18 +36,32 @@ const PatientForm: React.FC<PatientFormProps> = () => {
             const fetchPatient = async () => {
                 try {
                     const [patientData] = await getById(parseInt(id));
-                    if (patientData.birthDate instanceof Date) {
-                        const auxStringDate = patientData.birthDate.toLocaleString("en-US", { timeZone: "America/Sao_Paulo" });
-                        const auxDate = new Date(auxStringDate);
-                        patientData.birthDate = auxDate;
+                    if (!patientData) {
+                        Swal.fire({
+                            title: "Paciente não encontrado!",
+                            icon: "error",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                        navigate("/");
+                        return;
                     }
-                    patientData.birthDate = new Date(patientData.birthDate);
-                    setPatient(patientData);
+                    //Sequência de malabarismos com a variável para converter de Date -> string - Date
+                    const { birthDate } = patientData;
+                    const anotherDate = new Date(birthDate);
+                    const stringDate = anotherDate.toISOString().split('T')[0];
+                    const dateFromString = new Date(stringDate);
+                    setPatient({ ...patientData, birthDate: dateFromString });
                 } catch (error) {
                     console.error("Erro ao buscar paciente:", error);
+                    Swal.fire({
+                        title: "Erro ao buscar paciente!",
+                        icon: "error",
+                        showConfirmButton: false,
+                        timer: 1500,
+                    });
                 }
             };
-
             fetchPatient();
         }
     }, [id]);
@@ -78,17 +92,15 @@ const PatientForm: React.FC<PatientFormProps> = () => {
 
     const handleDateChange = (e: ChangeEvent<HTMLInputElement>) => {
         const { value } = e.target;
+        if (value.length < 10) return;
         const dateValue = new Date(value);
-        console.log(patient.birthDate);
-        
+        console.log('data que vem do input: ', dateValue, typeof dateValue);
         if (!isNaN(dateValue.getTime())) {
             setPatient((prevPatient) => ({
                 ...prevPatient,
                 birthDate: dateValue,
             }));
-        }    
-        console.log(patient.birthDate);
-            
+        }
     }
 
     const handleSubmit = async (e: FormEvent) => {
@@ -120,7 +132,7 @@ const PatientForm: React.FC<PatientFormProps> = () => {
                     showConfirmButton: false,
                     timer: 1500,
                 }).then(() => {
-                getAll();
+                    getAll();
                 });
             }
             setPatient({
@@ -137,14 +149,15 @@ const PatientForm: React.FC<PatientFormProps> = () => {
                     country: "",
                 },
             });
-            navigate("/test");
+            navigate("/");
         } catch (error) {
-            console.error("Erro ao salvar paciente:");
+            console.error("Erro ao salvar paciente:", error);
             Swal.fire({
-                title: "Erro ao salvar paciente!",
+                title: "Erro ao atualizar paciente!",
+                text: "Para atualizar a pessoa paciente é necessário alterações.",
                 icon: "error",
                 showConfirmButton: false,
-                timer: 1500,
+                timer: 2500,
             });
         }
     };

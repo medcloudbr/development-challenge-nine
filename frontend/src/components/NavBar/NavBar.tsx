@@ -41,7 +41,7 @@ function NavBar() {
             Menu
           </Typography>
           <div className='divider' >
-            <Link to='/test'>
+            <Link to='/'>
               <Button className='in-menu-button'
                 style={inMenuButtonStyle}
               >
