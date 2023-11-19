@@ -21,7 +21,7 @@ function DevCard() {
           style={{ marginRight: '10px', marginLeft: '10px', fontSize: '80px', color: '#009adf' }}
         />
         <Instagram
-          onClick={() => window.open('https://www.instagram.com/juan_cassius/', '_blank')}
+          onClick={() => window.open('https://www.instagram.com/juan.cassius/', '_blank')}
           style={{ marginRight: '10px', marginLeft: '10px', fontSize: '80px', color: '#009adf' }}
         />
         <Email
